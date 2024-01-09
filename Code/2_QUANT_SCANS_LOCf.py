@@ -1,37 +1,19 @@
-"""Script creates a series of tiles for classifying with the purpose of building a machine learning model
-
-Written by Meredith Fay for collaboration with Dominick Hellen of the Saul Karpen lab
-Emory University
-
-This is the third step within a larger pipeline:
--The user should begin by exporting tiles from qupath using script contained within 0_qupath_tiles.txt
--Using the tiles created by the script 1_0_tiles_for_class.py, an experimentalist of clinician should classify the bile ducts within
-each tile
--Next, the user should use the script 1_1_quant_class_tiles.py to quantify event data and append it to the known classes
-
--Here, the user should quantify event data for a larger set of images (no tiles are created)
--The model built in 3_machine_learning.ipynb can be used to classify this numerical data
-
-This script is designed to run automatically after the user selects a directory of files
--The directory should contain a folder of Qupath tiles (paired detections/original intensity data) for any
-number of large liver scans (one folder/scan)
-
-These are all saved in one excel file per folder. User may need to perform some file management for use with additional scripts.
+Written by Meredith Fay and edited by Dominick Hellen for collaboration in creating BiliQML
 
 """
 
 # Import libraries
-#   File management
-from tkinter import filedialog  # For selecting files
-import os  # For directory management
-import glob
-import shutil
-#   Number, file, and image management
-import cv2  # Computer vision/image processing
+# For selecting files and directory management
+from tkinter import filedialog
+import os
+import glob 
+import shutil 
+#   Number, file, image management, Computer vision/image processing, and array/data management
+import cv2  
 import tifffile as tiff
 from skimage import measure, util
-import numpy as np  # For array management
-import pandas as pd  # For database management
+import numpy as np  
+import pandas as pd 
 
 # EDIT PARAMETERS HERE
 avgcellw = 15  # Pulled from an image - rough diameter of a single positive detection, used to link cells together
