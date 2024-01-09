@@ -2,7 +2,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import qupath.lib.objects.PathDetectionObject; // Changed from PathAnnotationObject
 import qupath.lib.roi.RectangleROI;
-
 import qupath.lib.regions.RegionRequest;
 import qupath.lib.gui.scripting.QPEx;
 
@@ -31,7 +30,8 @@ createFullImageAnnotation(true)
 selectAnnotations();
 
 // Create BufferedReader
-def csvReader = new BufferedReader(new FileReader('/Users/dominickhellen/Downloads/heat map trial/tiles/ctls/c6/N-30 CTL 6_Scan1.qptiff - resolution #1.csv'));
+// Enter the directory name where the data for your file is located
+def csvReader = new BufferedReader(new FileReader('YOUR FILE DIRECTORY NAME GOES HERE'));
 
 row = csvReader.readLine(); // first row (header)
 
